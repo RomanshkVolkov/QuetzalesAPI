@@ -15,8 +15,10 @@
   },
   "homepage": "https://github.com/RomanshkVolkov/QuetzalesAPI#readme",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon src/server.js --exec babel-node",
+    "build": "babel src --out-dir build",
+    "start": "node build/server.js",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/cli": "^7.17.6",
