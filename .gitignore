@@ -1,0 +1,6 @@
+
+#ignorar archivos y carpetas/
+
+.env
+node_modules/
+
