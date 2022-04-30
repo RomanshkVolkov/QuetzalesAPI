@@ -57,7 +57,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/products/:productId",
+							"raw": "http://localhost:4000/products/626cdd90066549f91aa6d8cc",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -65,13 +65,7 @@
 							"port": "4000",
 							"path": [
 								"products",
-								":productId"
-							],
-							"variable": [
-								{
-									"key": "productId",
-									"value": null
-								}
+								"626cdd90066549f91aa6d8cc"
 							]
 						}
 					},
@@ -81,7 +75,18 @@
 					"name": "/products/:productId",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmNkNjdmMTEwOTQ0N2IyYjc0ZWI4YyIsImlhdCI6MTY1MTMwMTY3MCwiZXhwIjoxNjUxMzg4MDcwfQ.xJPnCRmQtqKDig607fwcGSk5MuBELAo8NmSfBwhi5-w",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -92,7 +97,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/products/:productId",
+							"raw": "http://localhost:4000/products/626cdd90066549f91aa6d8cc",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -100,13 +105,7 @@
 							"port": "4000",
 							"path": [
 								"products",
-								":productId"
-							],
-							"variable": [
-								{
-									"key": "productId",
-									"value": null
-								}
+								"626cdd90066549f91aa6d8cc"
 							]
 						}
 					},
@@ -169,7 +168,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n//solo se actualizan los datos que enviemos \r\n//(no son requeridos todos)\r\n\r\n{\r\n    \"name\": \"Lapicero\",\r\n    \"category\": \"Oficina\",\r\n    \"price\": 1,\r\n    \"imgURL\": \"https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg/\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Lapicero\",\r\n    \"category\": \"Oficina\",\r\n    \"price\": 1,\r\n    \"imgURL\": \"https://s1.1zoom.me/big3/471/Painting_Art_Back_view_Photographer_575380_3840x2400.jpg/\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
