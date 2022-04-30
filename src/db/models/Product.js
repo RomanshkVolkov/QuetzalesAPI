@@ -1,11 +1,12 @@
+import { number, string } from "joi";
 import { Schema, model } from "mongoose";
 
 const productSchema = new Schema(
   {
-    name: String,
-    category: String,
-    price: Number,
-    imgURL: String,
+    name: { type: String, required: true, maxlength: 30 },
+    category: { type: String, required: true, maxlength: 30 },
+    price: { type: Number, required: true, min: 1, max: 30000 },
+    imgURL: { type: String, required: true },
   },
   {
     timestamps: true,

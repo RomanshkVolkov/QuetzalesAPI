@@ -10,10 +10,12 @@ const productSchema = new Schema(
     email: {
       type: String,
       unique: true,
+      lowercase: true,
     },
     password: {
       type: String,
       required: true,
+      minlength: 6,
     },
     roles: [
       {
