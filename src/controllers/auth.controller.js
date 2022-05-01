@@ -3,6 +3,7 @@ import Role from "../db/models/Role";
 
 import jwt from "jsonwebtoken";
 import config from "../../config/config";
+import { redirect } from "express/lib/response";
 
 export const signUp = async (req, res) => {
   try {
@@ -31,6 +32,7 @@ export const signUp = async (req, res) => {
     const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
       expiresIn: 86400, // 24 hours
     });
+
 
     return res.status(200).json({ token });
   } catch (error) {
@@ -64,6 +66,15 @@ export const signin = async (req, res) => {
     });
 
     res.json({ token });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const logout = async (req, res) => {
+  try {
+    res.cookie('jwt', '', { maxAge: 1 });
+    res.redirect('/products');
   } catch (error) {
     console.log(error);
   }

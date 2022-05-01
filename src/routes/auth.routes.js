@@ -20,4 +20,6 @@ router.post(
 
 router.post("/signin", authCtrl.signin);
 
+router.get("/logout", authCtrl.logout);
+
 export default router;
