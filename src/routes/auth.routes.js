@@ -3,6 +3,7 @@ const router = Router();
 
 import * as authCtrl from "../controllers/auth.controller";
 import { verifySignup } from "../middlewares";
+import { authJwt } from '../middlewares';
 
 router.use((req, res, next) => {
   res.header(
@@ -20,6 +21,8 @@ router.post(
 
 router.post("/signin", authCtrl.signin);
 
-router.get("/logout", authCtrl.logout);
+router.get("/logout",  
+//authJwt.verifyToken,
+authCtrl.logout);
 
 export default router;

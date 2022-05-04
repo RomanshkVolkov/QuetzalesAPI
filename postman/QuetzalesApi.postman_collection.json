@@ -341,7 +341,18 @@
 					"name": "/auth/logout",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmNkNjdmMTEwOTQ0N2IyYjc0ZWI4YyIsImlhdCI6MTY1MTYyNDMwMSwiZXhwIjoxNjUxNzEwNzAxfQ.nTp3Ayb9EKhGn3eB9RCGmjn2yan2gH_zLt9QT_8e5BM",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:4000/auth/logout?",
 							"protocol": "http",

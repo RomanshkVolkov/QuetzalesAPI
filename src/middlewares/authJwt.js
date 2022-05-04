@@ -3,6 +3,7 @@ import config from "../../config/config";
 import User from "../db/models/User";
 import Role from "../db/models/Role";
 
+
 export const verifyToken = async (req, res, next) => {
   let token = req.headers["x-access-token"];
 
