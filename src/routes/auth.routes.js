@@ -22,7 +22,7 @@ router.post(
 router.post("/signin", authCtrl.signin);
 
 router.get("/logout",  
-//authJwt.verifyToken,
+authJwt.verifyToken,
 authCtrl.logout);
 
 export default router;

@@ -1,8 +1,7 @@
 import { redirect } from "express/lib/response";
 import Product from "../db/models/Product";
 
-export const findProducts = async (req, res) => {
-   console.log('se murio xd'); 
+export const findProducts = async (req, res) => { 
    const { search } = req.params;
 try {
     if (search) {

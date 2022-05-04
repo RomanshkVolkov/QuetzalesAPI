@@ -4,4 +4,3 @@
 .env
 node_modules/
 mongo_data/
-view_test/
