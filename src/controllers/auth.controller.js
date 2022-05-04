@@ -65,7 +65,7 @@ export const signin = async (req, res) => {
       expiresIn: 86400, // 24 hours
     });
 //console.log(token)
-    res.header('x-access-token', token).json({ token });
+    res.json({ token });
   } catch (error) {
     console.log(error);
   }

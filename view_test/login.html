@@ -54,10 +54,18 @@ left:1px;
     <button type="button" onclick="logout();">Cerrar sesión</button>
 
 <script>
-    function login(){
+    let options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: ''
+            };
+    function login(options){
         let auth = [];
         let email = null;
         let password = null;
+        let token = null;
 
         email = document.getElementsByName("email")[0].value;
         password = document.getElementsByName("password")[0].value;
@@ -67,20 +75,56 @@ left:1px;
             password: password
     }
     //location.reload();
-console.log(auth);
-    axios
-    .post('http://localhost:4000/auth/signin?', auth)
-    .then((response) => {
+    console.log(auth);
+    
+    options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(auth)
+            };
 
-    }).catch((error) => {
-        console.error('There was an error!', error);
-    });;
+    const getToken = async () => {
+        try{
+            
+            const response = await fetch('http://localhost:4000/auth/signin?', options)
+            const data = await response.json()
 
+            console.log(data);
+            token = data.token;
+            console.log('Tokensote: ',token);
+
+    /*const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    headers.append('x-access-token', token);
+    console.log(headers);
+    */
+    options = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-access-token": token
+                }
+            };
+    return options;
+        } catch (error) {
+            console.log('Error in fetch: ',error)
+        }
+    }
+        getToken()
+        
+    
+        
+
+
+    
     }
 
-    function logout(){
+    function logout(options){
+        if (!options) return console.error('No token provider');
         axios
-        .get('http://localhost:4000/auth/logout?')
+        .get('http://localhost:4000/auth/logout?', options)
         .then((response) => {
 
         }).catch((error) => {
