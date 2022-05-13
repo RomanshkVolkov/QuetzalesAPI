@@ -13,4 +13,4 @@ const shoppingSchema = new Schema ({
     }
 }, { versionKey: false });
 
-export default model("Shopping", "shoppingSchema");
+export default model("Shopping", shoppingSchema);

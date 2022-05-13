@@ -2,17 +2,17 @@ import { Router } from "express";
 const router = Router();
 
 import * as shoppingCtrl from "../controllers/shopping.controller";
-import { authJwt, verifySignup } from "../middlewares/authJwt";
+import { authJwt } from "../middlewares";
 
 router.get(
     "/",
-    authJwt.verifySignup,
+    authJwt.verifyToken,
     shoppingCtrl.showProducts
-)
+);
 
 router.post(
     "/",
-    authJwt.verifySignup,
+    authJwt.verifyToken,
     shoppingCtrl.AddProduct
 );
 
