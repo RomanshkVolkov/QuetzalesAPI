@@ -2,6 +2,31 @@ import User from "../db/models/User";
 import Role from "../db/models/Role";
 
 export const createUser = async (req, res) => {
+  const url = new URL(
+    "https://api.chec.io/v1/customers"
+);
+
+let headers = {
+    "X-Authorization": "{token}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "leslie.lawless@example.com",
+    "phone": "+1 987 654 3210",
+    "firstname": "Leslie",
+    "lastname": "Lawless",
+    "external_id": "MY_CRM_USER_123"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
   try {
     const { username, email, password, roles } = req.body;
 
