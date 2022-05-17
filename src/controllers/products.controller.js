@@ -25,12 +25,12 @@ export const getProductById = async (req, res) => {
   const { productId } = req.params;
 
   const product = await Product.findById(productId)
-  .select('name category price imgURL');
+  .select('name category price amount imgURL');
   res.status(200).json(product);
 };
 
 export const getProducts = async (req, res) => {
-  const products = await Product.find().select('name category price imgURL');
+  const products = await Product.find().select('name category price amount imgURL');
   return res.json(products);
 };
 
