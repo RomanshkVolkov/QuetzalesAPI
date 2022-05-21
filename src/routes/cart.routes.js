@@ -1,19 +1,19 @@
 import { Router } from "express";
 const router = Router();
 
-import * as shoppingCtrl from "../controllers/shopping.controller";
+import * as cartCtrl from "../controllers/cart.controller";
 import { authJwt } from "../middlewares";
 
 router.get(
     "/",
     authJwt.verifyToken,
-    shoppingCtrl.showProducts
+    cartCtrl.showProducts
 );
 
 router.post(
     "/",
     authJwt.verifyToken,
-    shoppingCtrl.AddProduct
+    cartCtrl.AddProduct
 );
 
 export default router;

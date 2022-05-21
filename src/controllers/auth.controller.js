@@ -1,8 +1,10 @@
+import jwt from "jsonwebtoken";
+import fetch from "node-fetch";
 import User from "../db/models/User";
 import Role from "../db/models/Role";
 
-import jwt from "jsonwebtoken";
 import config from "../../config/config";
+
 import { redirect } from "express/lib/response";
 
 export const signUp = async (req, res) => {
@@ -27,6 +29,8 @@ export const signUp = async (req, res) => {
 
     // Saving the User Object in Mongodb
     const savedUser = await newUser.save();
+    console.log(savedUser)
+    createUserCommerce(savedUser)
 
     // Create a token
     const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
@@ -81,3 +85,40 @@ export const logout = async (req, res) => {
     console.log(error);
   }
 };
+
+async function createUserCommerce(savedUser)  {
+  try {
+    const url = new URL(
+      "https://api.chec.io/v1/customers"
+    );
+  
+    const token = process.env.REACT_APP_CHEC_PUBLIC_KEY
+    const email = String(savedUser?.email)
+    const id = JSON.stringify(savedUser?._id)
+    const idSubs = String(id).substring(1, 25)
+    
+    let headers = {
+      "X-Authorization": token,
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    }
+    let body = {
+      "email": email,
+      "phone": "null",
+      "firstname": "null",
+      "lastname": "null",
+      "external_id": idSubs
+    }
+
+    console.log(body)
+    await fetch(url, {
+      method: "POST",
+      headers: headers,
+      body: body
+    })
+    .then(response => response.json())
+    .then(json => console.log(json?.error?.errors));
+  } catch (error) {
+    console.log(error)
+  }
+}
