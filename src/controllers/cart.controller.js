@@ -58,13 +58,13 @@ export const showProducts = async (req, res) => {
         const query = [
             {
                 path: 'products',
-                select: 'name description price category amount imgURL',
+                select: 'name description price category amount imgURL -_id',
                 options: { sort: { 'price': 1 } }
             }
         ]
         const { idUser } = req.body
         const getProducts = await Cart.find({idUser})
-        .select('')
+        .select('products -_id')
         .populate(query)
 
         return res.status(200).json(getProducts)
