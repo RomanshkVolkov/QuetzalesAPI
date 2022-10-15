@@ -20,5 +20,3 @@ Start dev app
 npm run dev
 ```
 Create version for production
-
-Credits: FaztWeb `https://github.com/FaztWeb/company-products-api`
